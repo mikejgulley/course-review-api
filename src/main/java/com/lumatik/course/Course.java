@@ -1,11 +1,13 @@
 package com.lumatik.course;
 
-import com.lumatik.com.lumatik.core.BaseEntity;
+import com.lumatik.core.BaseEntity;
+import com.lumatik.review.Review;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by mgull on 5/31/2017.
@@ -14,15 +16,23 @@ import javax.persistence.Id;
 public class Course extends BaseEntity {
     private String title;
     private String url;
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private List<Review> reviews;
 
     protected Course() {
         super();
+        reviews = new ArrayList<>();
     }
 
     public Course(String title, String url) {
         this();
         this.title = title;
         this.url = url;
+    }
+
+    public void addReview(Review review) {
+        review.setCourse(this);
+        reviews.add(review);
     }
 
     public String getTitle() {

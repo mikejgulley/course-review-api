@@ -1,29 +1,37 @@
 package com.lumatik.review;
 
-import com.lumatik.com.lumatik.core.BaseEntity;
+import com.lumatik.core.BaseEntity;
+import com.lumatik.course.Course;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 /**
  * Created by mgull on 5/31/2017.
  */
 @Entity
 public class Review extends BaseEntity {
-
     private int rating;
     private String description;
+    @ManyToOne()
+    private Course course;
 
     protected Review() {
         super();
     }
 
     public Review(int rating, String description) {
-        this();
         this.rating = rating;
         this.description = description;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     public int getRating() {

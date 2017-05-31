@@ -1,4 +1,4 @@
-package com.lumatik.com.lumatik.core;
+package com.lumatik.core;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
