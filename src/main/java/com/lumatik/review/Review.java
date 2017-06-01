@@ -2,6 +2,7 @@ package com.lumatik.review;
 
 import com.lumatik.core.BaseEntity;
 import com.lumatik.course.Course;
+import com.lumatik.user.User;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -16,6 +17,16 @@ public class Review extends BaseEntity {
     private String description;
     @ManyToOne()
     private Course course;
+    @ManyToOne
+    private User reviewer;
+
+    public User getReviewer() {
+        return reviewer;
+    }
+
+    public void setReviewer(User reviewer) {
+        this.reviewer = reviewer;
+    }
 
     protected Review() {
         super();
