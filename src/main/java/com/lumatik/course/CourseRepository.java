@@ -13,7 +13,6 @@ public interface CourseRepository extends PagingAndSortingRepository<Course, Lon
 
     @RestResource(rel = "title-contains", path = "containsTitle") // alters url
     Page<Course> findByTitleContaining(@Param("title") String title, Pageable page);
-    // example: http://localhost:8080/courses/search/findByTitleContaining?title=Java&size=5
-    // http://localhost:8080/courses/search/findByTitleContaining?title=Java&page=4&size=5
+    // example: http://localhost:8080/api/v1/courses/search/containsTitle?title=Java&size=5
 
 }
